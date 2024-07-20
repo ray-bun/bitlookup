@@ -19,7 +19,7 @@ npm run dev
 
 ```
 
-# Sample CSV
+# Sample CSV (keys.csv)
 
 ```
 machine_serial,key_1,key_2
@@ -43,7 +43,9 @@ http://localhost/search/111111
 https://www.hirensbootcd.org/usb-booting/
 ```
 
-# PowerShell script to get machine serial and then retrieve the BitLocker key from the API endpoint. Please remember to update the domain in the script
+# PowerShell script
+
+This script will retrieve the user machine serial and then obtain the BitLocker key from the API endpoint. Please remember to update the domain in the script. Boot with the bootable USB, run the below PowerShell script
 
 ```
 https://gist.github.com/ray-bun/b6fdf1e77282862665b597dc3f1765dc
