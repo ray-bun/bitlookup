@@ -1,9 +1,10 @@
-# Help your user find their bitcloker key faster
+# Help your users recover faster from the CloudStrike Blue Screen of Death.
 
-You'll need to extract the BitLocker keys from Active Directory / Intune and then populate the keys.csv file
+You'll need to extract the BitLocker keys from Active Directory / InTune and then populate the keys.csv file
+
 Demo at: https://bitlookup.net/
 
-# How do use it
+# How to run it locally
 
 ```
 git clone https://github.com/ray-bun/bitlookup
@@ -36,14 +37,14 @@ https://bitlookup.net/search/111111
 http://localhost/search/111111
 ```
 
-# Powershell script
-
-```
-https://gist.github.com/ray-bun/b6fdf1e77282862665b597dc3f1765dc
-```
-
 # Bootable USB
 
 ```
 https://www.hirensbootcd.org/usb-booting/
+```
+
+# PowerShell script to get machine serial and then retrieve the BitLocker key from the API endpoint. Please remember to update the domain in the script
+
+```
+https://gist.github.com/ray-bun/b6fdf1e77282862665b597dc3f1765dc
 ```
