@@ -6,7 +6,7 @@ import Footer from "~/components/Footer";
 import fs from "fs";
 import path from "path";
 import { parse } from "csv-parse/sync";
-
+import NeedHelp from "~/components/NeedHelp";
 // Define the structure of our CSV data
 interface KeyEntry {
   machine_serial: string;
@@ -67,52 +67,76 @@ export default function Index() {
         </header>
 
         {/* Main Content */}
-        <main className="flex-grow flex items-center justify-center">
-          <div className="max-w-2xl w-full text-center">
-            <h1 className="mb-4 text-4xl font-black tracking-tight text-black xl:text-6xl dark:text-white">BitLocker Recovery Finder</h1>
-            <h2 className="mb-6 font-medium leading-relaxed text-gray-700 lg:text-lg dark:text-gray-300">Recover faster from the CrowdStrike incident with our BitLocker Recovery Finder</h2>
-            <div className="mb-8 inline-flex rounded-full bg-gray-100 px-2 py-1 text-xs font-semibold leading-4 text-gray-600">API Endpoint: https://bitlookup.net/search/xxxxxxxx</div>
-            <Form method="post" className="mb-8">
-              <div className="flex items-center rounded-xl bg-gray-300/25 p-3 dark:bg-white/10">
-                <input
-                  type="text"
-                  id="serialKey"
-                  name="serialKey"
-                  placeholder="Computer serial key"
-                  className="block w-full grow rounded-l-lg border border-transparent px-5 py-3 text-sm leading-6 placeholder-gray-500 focus:border-transparent focus:ring focus:ring-blue-500/75 sm:text-base dark:border-transparent dark:bg-gray-900/60 dark:placeholder-gray-400"
-                  value={serialKey}
-                  onChange={(e) => setSerialKey(e.target.value)}
+        <main className="flex-grow flex items-center justify-center py-12">
+          <div className="flex w-full max-w-7xl space-x-16">
+            {/* Main content on the left */}
+            <div className="w-1/2">
+              <h1 className="mb-6 text-5xl font-black tracking-tight text-black dark:text-white">BitLocker Recovery Finder</h1>
+              <h2 className="mb-8 text-xl font-medium leading-relaxed text-gray-700 dark:text-gray-300">Recover faster from the CrowdStrike incident with our BitLocker Recovery Finder</h2>
+              <div className="mb-8 inline-flex rounded-full bg-blue-100 px-3 py-1 text-sm font-semibold text-blue-800 dark:bg-blue-900 dark:text-blue-200">
+                API Endpoint: https://bitlookup.net/search/xxxxxxxx
+              </div>
+              <Form method="post" className="mb-8">
+                <div className="flex items-center rounded-xl bg-white shadow-md dark:bg-gray-800">
+                  <input
+                    type="text"
+                    id="serialKey"
+                    name="serialKey"
+                    placeholder="Enter machine serial key"
+                    className="block w-full rounded-l-xl border-0 px-5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 dark:bg-gray-700 dark:text-white dark:ring-gray-600 dark:placeholder:text-gray-400 dark:focus:ring-blue-500"
+                    value={serialKey}
+                    onChange={(e) => setSerialKey(e.target.value)}
+                  />
+                  <button
+                    type="submit"
+                    className="rounded-r-xl bg-blue-600 px-6 py-4 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 dark:bg-blue-700 dark:hover:bg-blue-600"
+                  >
+                    Find
+                  </button>
+                </div>
+              </Form>
+              {actionData?.result && (
+                <div className="rounded-lg bg-white p-6 shadow-lg dark:bg-gray-800">
+                  <h3 className="text-xl font-semibold mb-4">Your BitLocker keys:</h3>
+                  {typeof actionData.result === "string" ? (
+                    <p className="text-gray-700 dark:text-gray-300">{actionData.result}</p>
+                  ) : (
+                    <>
+                      <p className="text-gray-700 dark:text-gray-300 mb-2">Key 1: {actionData.result.key_1}</p>
+                      <p className="text-gray-700 dark:text-gray-300">Key 2: {actionData.result.key_2}</p>
+                    </>
+                  )}
+                </div>
+              )}
+            </div>
+
+            {/* Video on the right */}
+            <div className="w-1/2 flex flex-col">
+              <div className="flex-grow relative overflow-hidden rounded-lg shadow-lg">
+                <iframe
+                  src="https://www.canva.com/design/DAGLhqBgZOs/nc8zqG2dNZ5fr5RQD8_x9Q/watch?embed"
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    border: "none",
+                  }}
+                  allowFullScreen
+                  allow="fullscreen"
                 />
-                <button
-                  type="submit"
-                  className="inline-flex flex-none items-center justify-center gap-2 rounded-r-lg border border-blue-700 bg-blue-700 px-2 py-3 text-sm font-medium leading-6 text-white hover:border-blue-600 hover:bg-blue-600 hover:text-white focus:ring focus:ring-blue-400/50 active:border-blue-700 active:bg-blue-700 sm:px-6 sm:text-base dark:focus:ring-blue-400/90"
-                >
-                  Find
-                </button>
               </div>
-            </Form>
-            {actionData?.result && (
-              <div className="mt-4 rounded-lg bg-white p-4 shadow-md dark:bg-gray-800">
-                <h3 className="text-lg font-semibold">Your BitLocker keys:</h3>
-                {typeof actionData.result === "string" ? (
-                  <p className="mt-2">{actionData.result}</p>
-                ) : (
-                  <>
-                    <p className="mt-2">Key 1: {actionData.result.key_1}</p>
-                    <p className="mt-2">Key 2: {actionData.result.key_2}</p>
-                  </>
-                )}
-              </div>
-            )}
+            </div>
           </div>
         </main>
-      </div>
 
-      {/* Banner at the bottom, aligned with the container */}
-      <div className="container mx-auto px-4 mt-auto">
-        <img src="/sample1.png" alt="Banner" className="w-full h-auto object-cover object-center" />
+        {/* Banner at the bottom, aligned with the container */}
+        <div className="mt-auto mb-8">
+          <img src="/sample1.png" alt="Banner" className="w-full h-auto object-cover object-center rounded-lg shadow-md" />
+        </div>
       </div>
-
+      <NeedHelp />
       <Footer />
     </div>
   );
