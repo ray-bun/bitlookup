@@ -1,14 +1,15 @@
-# Help your users recover faster from the CloudStrike Blue Screen of Death.
+# BitLookup
 
-You'll need to extract the BitLocker keys from Active Directory / InTune and then populate the keys.csv file
+If your C drive is bitlocked, then the solution below may help you recover faster if you have lots of machines to recover. Help your users recover faster from the CloudStrike Blue Screen of Death .
+
+You'll need to extract the BitLocker keys from Active Directory / InTune and then populate the keys.csv file.
 
 Demo at: https://bitlookup.net/
 
-# How to run it locally
+## How to run it locally
 
 ```
 git clone https://github.com/ray-bun/bitlookup
-
 ```
 
 Rename: sample.env to .env and update CSV_FILEPATH file path
@@ -16,10 +17,9 @@ Rename: sample.env to .env and update CSV_FILEPATH file path
 ```
 npm install
 npm run dev
-
 ```
 
-# Sample CSV (keys.csv)
+## Sample CSV (keys.csv)
 
 ```
 machine_serial,key_1,key_2
@@ -30,22 +30,24 @@ machine_serial,key_1,key_2
 666666,214049-084172-043318-622193-640156-021384-556039-357302,084172-043318-622193-214049-556039-021384-640156-357302
 ```
 
-# API endpoint
+## API endpoint
 
 ```
 https://bitlookup.net/search/111111
 http://localhost/search/111111
 ```
 
-# Bootable USB
+## Bootable USB
+
+To create a bootable USB, you can use Hiren's BootCD:
 
 ```
 https://www.hirensbootcd.org/usb-booting/
 ```
 
-# PowerShell script
+## PowerShell script
 
-This script will retrieve the user machine serial and then obtain the BitLocker key from the API endpoint. Please remember to update the domain in the script. Boot with the bootable USB, run the below PowerShell script
+This script will retrieve the user machine serial and then obtain the BitLocker key from the API endpoint. Please remember to update the domain in the script. Boot with the bootable USB, run the below PowerShell script:
 
 ```
 https://gist.github.com/ray-bun/b6fdf1e77282862665b597dc3f1765dc
