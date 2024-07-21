@@ -75,7 +75,7 @@ export default function Index() {
               <h1 className="mb-4 text-3xl sm:text-5xl font-black tracking-tight text-black dark:text-white">BitLocker Recovery Finder</h1>
               <h2 className="mb-6 text-lg sm:text-xl font-medium leading-relaxed text-gray-700 dark:text-gray-300">Recover faster from the CrowdStrike incident with our BitLocker Recovery Finder</h2>
               <div className="mb-6 inline-flex rounded-full bg-blue-100 px-3 py-1 text-sm font-semibold text-blue-800 dark:bg-blue-900 dark:text-blue-200">
-                API Endpoint: https://bitlookup.net/search/xxxxxxxx
+                API Endpoint: https://bitlookup.net/search/xxxxxxxx | http://localhost/search/xxxxxxxx
               </div>
             </div>
 
