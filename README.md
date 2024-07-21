@@ -1,10 +1,17 @@
 # BitLookup
 
+See Reddit post: https://www.reddit.com/r/sysadmin/s/toSBawudld
+
 If your C drive is bitlocked, then the solution below may help you recover faster if you have lots of machines to recover. Help your users recover faster from the CloudStrike Blue Screen of Death .
 
 You'll need to extract the BitLocker keys from Active Directory / InTune and then populate the keys.csv file.
 
 Demo at: https://bitlookup.net/
+
+## Powershell script to extract Bitlocker keys
+```
+https://www.reddit.com/r/sysadmin/s/JTETMJNDA6
+```
 
 ## How to run it locally
 
