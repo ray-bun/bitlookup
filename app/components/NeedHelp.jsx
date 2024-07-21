@@ -12,9 +12,9 @@ export default function NeedHelp() {
               <div className="space-y-8">
                 {/* Heading */}
                 <div className="text-center">
-                  <h2 className="mb-4 text-4xl font-black text-black dark:text-white">Do you need a custom bootable USB solution?</h2>
+                  <h2 className="mb-4 text-4xl font-black text-black dark:text-white">Do you need a custom App or bootable USB solution?</h2>
                   <h3 className="mx-auto text-xl font-medium leading-relaxed text-gray-700 lg:w-2/3 dark:text-gray-300">
-                    We can assist you in creating a custom bootable USB solution for your business and security needs
+                    We can assist you in creating a custom App or bootable USB solution for your business and security needs
                   </h3>
                 </div>
                 {/* END Heading */}
